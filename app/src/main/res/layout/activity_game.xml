@@ -3,6 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.amarena.rss.amarena_brawl.GameActivity">
+    tools:context="com.amarena.rss.amarena_brawl.screens.GameActivity">
 
 </android.support.constraint.ConstraintLayout>
