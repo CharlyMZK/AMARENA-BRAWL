@@ -1,14 +1,29 @@
 package com.amarena.rss.amarena_brawl.models;
 
-/**
- * Created by MZK on 02/03/2017.
- */
-public class Wizzard extends Character {
-    int magicalShield;
+import com.orm.dsl.Table;
 
-    public Wizzard(String image, int x, int y, int speedX, int speedY, int lifePoints, int manaPoints, int magicalShield) {
-        super(image, x, y, speedX, speedY, lifePoints, manaPoints);
+@Table
+public class Wizzard extends Character {
+
+    private Long id;
+    private int magicalShield;
+
+    public Wizzard() {
+    }
+
+    public Wizzard(int lifePoints, int manaPoints, int magicalShield) {
+        super(lifePoints, manaPoints);
         this.magicalShield = magicalShield;
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public int getMagicalShield() {

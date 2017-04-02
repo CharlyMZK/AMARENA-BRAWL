@@ -1,12 +1,44 @@
 package com.amarena.rss.amarena_brawl.models;
 
-import java.util.List;
+import com.orm.dsl.Table;
 
-/**
- * Created by MZK on 02/03/2017.
- */
+@Table
 public class Config {
+
+    private Long id;
     private Player player;
     private Character character;
-    private List<Attack> choosedAttacks;
+
+    public Config() {
+    }
+
+    public Config(Long id, Player player, Character character) {
+        this.id = id;
+        this.player = player;
+        this.character = character;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Character getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(Character character) {
+        this.character = character;
+    }
 }

@@ -1,21 +1,26 @@
 package com.amarena.rss.amarena_brawl.models;
 
-import java.util.List;
+public abstract class Character {
 
-/**
- * Created by MZK on 02/03/2017.
- */
-public class Character extends Sprite {
+    private Long id;
     private int lifePoints;
     private int manaPoints;
-    private static List<Attack> everyAttacks;
 
-    public Character(String image, int x, int y, int speedX, int speedY, int lifePoints, int manaPoints) {
-        super(image, x, y, speedX, speedY);
+    public Character() {
+    }
+
+    public Character(int lifePoints, int manaPoints) {
         this.lifePoints = lifePoints;
         this.manaPoints = manaPoints;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public int getLifePoints() {
         return lifePoints;
@@ -31,13 +36,5 @@ public class Character extends Sprite {
 
     public void setManaPoints(int manaPoints) {
         this.manaPoints = manaPoints;
-    }
-
-    public static List<Attack> getEveryAttacks() {
-        return everyAttacks;
-    }
-
-    public static void setEveryAttacks(List<Attack> everyAttacks) {
-        Character.everyAttacks = everyAttacks;
     }
 }

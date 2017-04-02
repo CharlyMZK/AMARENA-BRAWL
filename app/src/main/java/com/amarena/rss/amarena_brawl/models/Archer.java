@@ -1,13 +1,19 @@
 package com.amarena.rss.amarena_brawl.models;
 
-/**
- * Created by MZK on 02/03/2017.
- */
-public class Archer extends Character{
-    int dodgeChance;
 
-    public Archer(String image, int x, int y, int speedX, int speedY, int lifePoints, int manaPoints, int dodgeChance) {
-        super(image, x, y, speedX, speedY, lifePoints, manaPoints);
+import com.orm.dsl.Table;
+
+@Table
+public class Archer extends Character {
+
+    private Long id;
+    private int dodgeChance;
+
+    public Archer() {
+    }
+
+    public Archer(int lifePoints, int manaPoints, int dodgeChance) {
+        super(lifePoints, manaPoints);
         this.dodgeChance = dodgeChance;
     }
 
@@ -19,4 +25,11 @@ public class Archer extends Character{
         this.dodgeChance = dodgeChance;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

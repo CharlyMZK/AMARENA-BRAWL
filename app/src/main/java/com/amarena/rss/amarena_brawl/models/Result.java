@@ -1,15 +1,20 @@
 package com.amarena.rss.amarena_brawl.models;
 
-/**
- * Created by MZK on 02/03/2017.
- */
+import com.orm.dsl.Table;
+
+@Table
 public class Result {
+
+    private Long id;
     private Player player;
     private Character character;
     private int victoriesPvp;
     private int victoriesPvc;
     private int defeatsPvp;
     private int defeatsPvc;
+
+    public Result() {
+    }
 
     public Result(Player player, Character character, int victoriesPvp, int victoriesPvc, int defeatsPvp, int defeatsPvc) {
         this.player = player;
@@ -18,6 +23,14 @@ public class Result {
         this.victoriesPvc = victoriesPvc;
         this.defeatsPvp = defeatsPvp;
         this.defeatsPvc = defeatsPvc;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Player getPlayer() {
