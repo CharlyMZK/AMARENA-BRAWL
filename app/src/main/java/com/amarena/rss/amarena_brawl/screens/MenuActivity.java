@@ -16,6 +16,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.amarena.rss.amarena_brawl.R;
+import com.amarena.rss.amarena_brawl.models.Attack;
+import com.amarena.rss.amarena_brawl.models.Character;
+import com.orm.SugarRecord;
+
+import java.util.ArrayList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,6 +38,7 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
         initButton();
     }
 

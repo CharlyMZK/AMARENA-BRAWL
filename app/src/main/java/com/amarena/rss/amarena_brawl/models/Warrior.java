@@ -1,14 +1,29 @@
 package com.amarena.rss.amarena_brawl.models;
 
-/**
- * Created by MZK on 02/03/2017.
- */
-public class Warrior extends Character{
-    int physicalShield;
+import com.orm.dsl.Table;
 
-    public Warrior(String image, int x, int y, int speedX, int speedY, int lifePoints, int manaPoints, int physicalShield) {
-        super(image, x, y, speedX, speedY, lifePoints, manaPoints);
+@Table
+public class Warrior extends Character {
+
+    private Long id;
+    private int physicalShield;
+
+    public Warrior() {
+    }
+
+    public Warrior(int lifePoints, int manaPoints, int physicalShield) {
+        super(lifePoints, manaPoints);
         this.physicalShield = physicalShield;
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public int getPhysicalShield() {

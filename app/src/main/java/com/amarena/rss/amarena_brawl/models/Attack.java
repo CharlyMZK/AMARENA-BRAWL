@@ -1,9 +1,13 @@
 package com.amarena.rss.amarena_brawl.models;
 
-/**
- * Created by MZK on 02/03/2017.
- */
+import com.orm.dsl.Table;
+
+@Table
 public class Attack {
+
+    private Long id;
+    private int characterId;
+    private int chosenId; // 0 if not choosen, 1 to 5 if choosen
     private int damages;
     private String name;
     private int criticalChance;
@@ -12,7 +16,12 @@ public class Attack {
     private int turnEffect;
     private int reloadTurn;
 
-    public Attack(int damages, String name, int criticalChance, int failChance, int manaCost, int turnEffect, int reloadTurn) {
+    public Attack() {
+    }
+
+    public Attack(int characterId, int chosenId, int damages, String name, int criticalChance, int failChance, int manaCost, int turnEffect, int reloadTurn) {
+        this.characterId = characterId;
+        this.chosenId = chosenId;
         this.damages = damages;
         this.name = name;
         this.criticalChance = criticalChance;
@@ -20,6 +29,30 @@ public class Attack {
         this.manaCost = manaCost;
         this.turnEffect = turnEffect;
         this.reloadTurn = reloadTurn;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getCharacterId() {
+        return characterId;
+    }
+
+    public void setCharacterId(int characterId) {
+        this.characterId = characterId;
+    }
+
+    public int getChosenId() {
+        return chosenId;
+    }
+
+    public void setChosenId(int chosenId) {
+        this.chosenId = chosenId;
     }
 
     public int getManaCost() {
