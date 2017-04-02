@@ -1,9 +1,0 @@
-<resources>
-    <string name="appName">Amarena Brawl</string>
-
-    -- Activity Menu --
-    <string name="btnMenuPvp">Player vs Player</string>
-    <string name="btnMenuPvb">Player vs Bot</string>
-    <string name="btnMenuCustomisation">Customisation</string>
-    <string name="btnMenuSettings">Settings</string>
-</resources>
