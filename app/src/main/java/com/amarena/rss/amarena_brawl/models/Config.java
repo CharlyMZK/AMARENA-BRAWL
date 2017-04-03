@@ -12,8 +12,7 @@ public class Config {
     public Config() {
     }
 
-    public Config(Long id, Player player, Character character) {
-        this.id = id;
+    public Config(Player player, Character character) {
         this.player = player;
         this.character = character;
     }

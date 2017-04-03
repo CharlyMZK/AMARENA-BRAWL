@@ -46,34 +46,34 @@ public class MenuActivity extends AppCompatActivity {
      * Permet d'initialiser les boutons
      */
     private void initButton() {
-        Button btnMenuPvp = (Button) this.findViewById(R.id.btnMenuPvp);
-        Button btnMenuPvb = (Button) this.findViewById(R.id.btnMenuPvb);
-        Button btnMenuCustomisation = (Button) this.findViewById(R.id.btnMenuCustomisation);
-        Button btnMenuSettings = (Button) this.findViewById(R.id.btnMenuSettings);
+        Button aMBtnPvp = (Button) this.findViewById(R.id.aMBtnPvp);
+        Button aMBtnPvb = (Button) this.findViewById(R.id.aMBtnPvb);
+        Button aMBtnCustomisation = (Button) this.findViewById(R.id.aMBtnCustomisation);
+        Button aMBtnSettings = (Button) this.findViewById(R.id.aMBtnSettings);
 
-        if (btnMenuPvp != null)
-            btnMenuPvp.setOnClickListener(new View.OnClickListener() {
+        if (aMBtnPvp != null)
+            aMBtnPvp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     onClickBtnMenuPvp();
                 }
             });
-        if (btnMenuPvb != null)
-            btnMenuPvb.setOnClickListener(new View.OnClickListener() {
+        if (aMBtnPvb != null)
+            aMBtnPvb.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     onClickBtnMenuPvb();
                 }
             });
-        if (btnMenuCustomisation != null)
-            btnMenuCustomisation.setOnClickListener(new View.OnClickListener() {
+        if (aMBtnCustomisation != null)
+            aMBtnCustomisation.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     onClickBtnMenuCustomisation();
                 }
             });
-        if (btnMenuSettings != null)
-            btnMenuSettings.setOnClickListener(new View.OnClickListener() {
+        if (aMBtnSettings != null)
+            aMBtnSettings.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     onClickBtnMenuSettings();

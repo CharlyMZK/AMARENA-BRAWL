@@ -3,15 +3,15 @@ package com.amarena.rss.amarena_brawl.models;
 import com.orm.dsl.Table;
 
 @Table
-public class Wizzard extends Character {
+public class Wizard extends Character {
 
     private Long id;
     private int magicalShield;
 
-    public Wizzard() {
+    public Wizard() {
     }
 
-    public Wizzard(int lifePoints, int manaPoints, int magicalShield) {
+    public Wizard(int lifePoints, int manaPoints, int magicalShield) {
         super(lifePoints, manaPoints);
         this.magicalShield = magicalShield;
     }

@@ -2,18 +2,16 @@
     <string name="appName">Amarena Brawl</string>
 
     -- Activity Menu --
-    <string name="btnMenuPvp">Player vs Player</string>
-    <string name="btnMenuPvb">Player vs Bot</string>
-    <string name="btnMenuCustomisation">Customisation</string>
-    <string name="btnMenuSettings">Settings</string>
+    <string name="aMBtnPvp">Player vs Player</string>
+    <string name="aMBtnPvb">Player vs Bot</string>
+    <string name="aMBtnCustomisation">Customisation</string>
+    <string name="aMBtnSettings">Settings</string>
 
-    -- Fragment spell --
-    <string name="spell1">Spell 1 failed to load</string>
-    <string name="spell2">Spell 2 failed to load</string>
-    <string name="spell3">Spell 3 failed to load</string>
-    <string name="spell4">Spell 4 failed to load</string>
-    <string name="spell5">Spell 5 failed to load</string>
-
-
+    -- Fragment Attacks --
+    <string name="fAIBtnAttacks1">Attack 1 failed to load</string>
+    <string name="fAIBtnAttacks2">Attack 2 failed to load</string>
+    <string name="fAIBtnAttacks3">Attack 3 failed to load</string>
+    <string name="fAIBtnAttacks4">Attack 4 failed to load</string>
+    <string name="fAIBtnAttacks5">Attack 5 failed to load</string>
 
 </resources>

@@ -14,10 +14,12 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
         GameView gameView = (GameView) findViewById(R.id.gameView);
-        RelativeLayout fragmentSpell = (RelativeLayout) findViewById(R.id.fragmentSpell);
+
+        RelativeLayout fragmentAttacks = (RelativeLayout) findViewById(R.id.fragmentAttacks);
         FragmentTransaction fragmentTransaction = this.getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentSpell, new SpellFragment());
+        fragmentTransaction.replace(R.id.fragmentAttacks, new AttacksFragment());
         fragmentTransaction.commit();
     }
 }
