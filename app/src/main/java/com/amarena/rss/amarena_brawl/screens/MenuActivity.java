@@ -8,23 +8,15 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.amarena.rss.amarena_brawl.R;
-import com.amarena.rss.amarena_brawl.models.Attack;
-import com.amarena.rss.amarena_brawl.models.Character;
-import com.orm.SugarRecord;
-
-import java.util.ArrayList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Set;
 
 public class MenuActivity extends AppCompatActivity {
@@ -46,10 +38,10 @@ public class MenuActivity extends AppCompatActivity {
      * Permet d'initialiser les boutons
      */
     private void initButton() {
-        Button aMBtnPvp = (Button) this.findViewById(R.id.aMBtnPvp);
-        Button aMBtnPvb = (Button) this.findViewById(R.id.aMBtnPvb);
-        Button aMBtnCustomisation = (Button) this.findViewById(R.id.aMBtnCustomisation);
-        Button aMBtnSettings = (Button) this.findViewById(R.id.aMBtnSettings);
+        Button aMBtnPvp = (Button) findViewById(R.id.aMBtnPvp);
+        Button aMBtnPvb = (Button) findViewById(R.id.aMBtnPvb);
+        Button aMBtnCustomisation = (Button) findViewById(R.id.aMBtnCustomisation);
+        Button aMBtnSettings = (Button) findViewById(R.id.aMBtnSettings);
 
         if (aMBtnPvp != null)
             aMBtnPvp.setOnClickListener(new View.OnClickListener() {
@@ -85,11 +77,11 @@ public class MenuActivity extends AppCompatActivity {
      * Actions pour le bouton du menu pvp
      */
     private void onClickBtnMenuPvp() {
-        if(!isBluetoothEnable()) {
+        if (!isBluetoothEnable()) {
             Log.d(TAG, "onClickBtnMenuPvb: Bluetooth disable !");
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-        }else {
+        } else {
             Intent intent = new Intent(this, GameActivity.class);
             showBluetoothDialog();
             //startActivity(intent);
@@ -135,7 +127,7 @@ public class MenuActivity extends AppCompatActivity {
         final Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
 
         int i = 0;
-        for(BluetoothDevice device : pairedDevices) {
+        for (BluetoothDevice device : pairedDevices) {
             items.add(device.getName());
             bluetoothDevices.put(i, device.getAddress());
             i++;

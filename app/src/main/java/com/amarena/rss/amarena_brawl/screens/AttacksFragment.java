@@ -8,12 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.amarena.rss.amarena_brawl.R;
+import com.amarena.rss.amarena_brawl.controlers.GameControler;
 
 public class AttacksFragment extends Fragment {
+    private GameControler gameControler = GameControler.getInstance();
 
     public AttacksFragment() {
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ public class AttacksFragment extends Fragment {
 
 
     private void onClickAttack1(){
-
+        gameControler.Attack();
     }
 
     private void onClickAttack2(){

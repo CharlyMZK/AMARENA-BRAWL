@@ -10,9 +10,13 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.amarena.rss.amarena_brawl.R;
+import com.amarena.rss.amarena_brawl.controlers.GameControler;
+import com.amarena.rss.amarena_brawl.models.Character;
 
 public class GameView extends View {
-    Paint paint;
+
+    private GameControler gameControler = GameControler.getInstance();
+    private Paint paint;
 
     /**
      * Constructeur
@@ -50,7 +54,8 @@ public class GameView extends View {
     @Override
     public void onDraw(Canvas canvas) {
         drawBackground(canvas);
-        drawLifeBars(canvas);
+        drawBars(canvas, gameControler.getPlayer(), true);
+        drawBars(canvas, gameControler.getEnnemy(), false);
     }
 
     /**
@@ -63,35 +68,37 @@ public class GameView extends View {
         canvas.drawBitmap(reziseBitmap(background, this.getWidth(), this.getHeight()), 0, 0, null);
     }
 
-    /**
-     * Permet de dessiner les barres de vies des deux personnages
-     *
-     * @param canvas Le canvas a utiliser
-     */
-    private void drawLifeBars(Canvas canvas) {
-        // Contour joueur
-        paint.reset();
-        paint.setColor(Color.WHITE);
-        paint.setStrokeWidth(10);
-        paint.setStyle(Paint.Style.STROKE);
-        canvas.drawRect(this.getWidth() * 0.6f, this.getHeight() * 0.84f, this.getWidth() * 0.9f, this.getHeight() * 0.86f, paint);
-        // vie
-        paint.reset();
-        paint.setColor(Color.RED);
-        paint.setStyle(Paint.Style.FILL);
-        canvas.drawRect(this.getWidth() * 0.6f, this.getHeight() * 0.84f, this.getWidth() * 0.9f, this.getHeight() * 0.86f, paint);
 
-        // Contour ennemie
+    /**
+     * Permet de dessiner la vie d'une personnage, avec son bouclier et sa mana
+     *
+     * @param canvas    Le canvas a utiliser
+     * @param character Le personnage a actualiser
+     * @param player    true si c'est le personnage du joueur
+     */
+    private void drawBars(Canvas canvas, Character character, boolean player) {
+        float characterLifeMultiplicator = (this.getWidth() * 0.9f - this.getWidth() * 0.6f) * (((float)character.getMaxLifePoints() - (float)character.getCurrentLifePoints()) / (float)character.getMaxLifePoints());
         paint.reset();
         paint.setColor(Color.WHITE);
-        paint.setStrokeWidth(10);
+        paint.setStrokeWidth(5);
         paint.setStyle(Paint.Style.STROKE);
-        canvas.drawRect(this.getWidth() * 0.1f, this.getHeight() * 0.14f, this.getWidth() * 0.4f, this.getHeight() * 0.16f, paint);
+        if (player)
+            canvas.drawRect(this.getWidth() * 0.6f, this.getHeight() * 0.84f, this.getWidth() * 0.9f, this.getHeight() * 0.86f, paint);
+        else
+            canvas.drawRect(this.getWidth() * 0.1f, this.getHeight() * 0.14f, this.getWidth() * 0.4f, this.getHeight() * 0.16f, paint);
         // vie
         paint.reset();
         paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.FILL);
-        canvas.drawRect(this.getWidth() * 0.1f, this.getHeight() * 0.14f, this.getWidth() * 0.4f, this.getHeight() * 0.16f, paint);
+        if (player)
+            canvas.drawRect(this.getWidth() * 0.6f, this.getHeight() * 0.84f, this.getWidth() * 0.9f - characterLifeMultiplicator, this.getHeight() * 0.86f, paint);
+        else
+            canvas.drawRect(this.getWidth() * 0.1f, this.getHeight() * 0.14f, this.getWidth() * 0.4f - characterLifeMultiplicator, this.getHeight() * 0.16f, paint);
+        // mana
+
+        // bouclier Magique
+
+        // bouclier physique
     }
 
     /**
