@@ -7,11 +7,11 @@
     <string name="aMBtnCustomisation">Customisation</string>
     <string name="aMBtnSettings">Settings</string>
 
-    -- Fragment Attacks --
-    <string name="fAIBtnAttacks1">Attack 1 failed to load</string>
-    <string name="fAIBtnAttacks2">Attack 2 failed to load</string>
-    <string name="fAIBtnAttacks3">Attack 3 failed to load</string>
-    <string name="fAIBtnAttacks4">Attack 4 failed to load</string>
-    <string name="fAIBtnAttacks5">Attack 5 failed to load</string>
+    -- Fragment Action --
+    <string name="fAIBtnAction1">Attack 1 failed to load</string>
+    <string name="fAIBtnAction2">Attack 2 failed to load</string>
+    <string name="fAIBtnAction3">Attack 3 failed to load</string>
+    <string name="fAIBtnAction4">Attack 4 failed to load</string>
+    <string name="fAIBtnAction5">Attack 5 failed to load</string>
 
 </resources>

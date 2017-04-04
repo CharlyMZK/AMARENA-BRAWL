@@ -18,12 +18,12 @@ public class GameActivity extends AppCompatActivity {
         // Recupération de la GameView
         GameView gameView = (GameView) findViewById(R.id.gameView);
 
-        // Mise en place du fragment des attaques
-        FragmentTransaction fragmentTransaction = this.getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentAttacks, new AttacksFragment());
-        fragmentTransaction.commit();
-
         //On initialise le gameControler
         GameController.getInstance().initGameControler(gameView);
+
+        // Mise en place du fragment des attaques
+        FragmentTransaction fragmentTransaction = this.getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentAttacks, new ActionFragment());
+        fragmentTransaction.commit();
     }
 }

@@ -1,8 +1,8 @@
 package com.amarena.rss.amarena_brawl.controllers;
 
+import com.amarena.rss.amarena_brawl.enums.Profession;
+import com.amarena.rss.amarena_brawl.models.Action;
 import com.amarena.rss.amarena_brawl.models.Character;
-import com.amarena.rss.amarena_brawl.models.Warrior;
-import com.amarena.rss.amarena_brawl.models.Wizard;
 import com.amarena.rss.amarena_brawl.views.GameView;
 
 public class GameController {
@@ -17,8 +17,8 @@ public class GameController {
      * Constructeur privé
      */
     private GameController() {
-        this.player = new Warrior(100, 100, 20);
-        this.ennemy = new Wizard(100, 100, 10);
+        this.player = new Character(Profession.ARCHER);
+        this.ennemy = new Character(Profession.WARRIOR);
     }
 
     /**
@@ -31,10 +31,12 @@ public class GameController {
     }
 
     /**
-     * Permet d'attaquer
+     * Permet d'utiliser l'action en fonction de l'id
+     *
+     * @param id id de l'action
      */
-    public void Attack() {
-        ennemy.setCurrentLifePoints(ennemy.getCurrentLifePoints() - 10);
+    public void doAction(int id) {
+        player.doAction(ennemy, new Action(id));
         gameView.invalidate();
     }
 

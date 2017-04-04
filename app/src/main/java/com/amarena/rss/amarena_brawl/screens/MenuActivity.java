@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.amarena.rss.amarena_brawl.R;
+import com.amarena.rss.amarena_brawl.controllers.DataBaseLoader;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +31,8 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        DataBaseLoader.LoadDataBase(); // Mise en place de la base de données si elle n'existe pas
 
         initButton();
     }

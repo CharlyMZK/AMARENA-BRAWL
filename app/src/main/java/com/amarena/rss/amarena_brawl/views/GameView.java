@@ -54,8 +54,7 @@ public class GameView extends View {
     @Override
     public void onDraw(Canvas canvas) {
         drawBackground(canvas);
-        drawBars(canvas, gameController.getPlayer(), true);
-        drawBars(canvas, gameController.getEnnemy(), false);
+        drawBars(canvas);
     }
 
     /**
@@ -72,33 +71,52 @@ public class GameView extends View {
     /**
      * Permet de dessiner la vie d'une personnage, avec son bouclier et sa mana
      *
-     * @param canvas    Le canvas a utiliser
-     * @param character Le personnage a actualiser
-     * @param player    true si c'est le personnage du joueur
+     * @param canvas Le canvas a utiliser
      */
-    private void drawBars(Canvas canvas, Character character, boolean player) {
-        float characterLifeMultiplicator = (this.getWidth() * 0.9f - this.getWidth() * 0.6f) * (((float)character.getMaxLifePoints() - (float)character.getCurrentLifePoints()) / (float)character.getMaxLifePoints());
+    private void drawBars(Canvas canvas) {
+        Character player = gameController.getPlayer();
+        float playerLifeMultiplicator = this.getWidth() * (0.9f - 0.6f) * ((player.getMaxLife() - player.getLife()) / (float) player.getMaxLife());
+        float playerManaMultiplicator = this.getWidth() * (0.9f - 0.6f) * ((player.getMaxMana() - player.getMana()) / (float) player.getMaxMana());
+        float playerPhysicalShieldMultiplicator = this.getWidth() * (0.9f - 0.6f) * ((player.getMaxPhysicalShield() - player.getPhysicalShield()) / (float) player.getMaxPhysicalShield());
+        float playerMagicalShieldMultiplicator = this.getWidth() * (0.9f - 0.6f) * ((player.getMaxMagicalShield() - player.getMagicalShield()) / (float) player.getMaxMagicalShield());
+
+        Character ennemy = gameController.getEnnemy();
+        float ennemyLifeMultiplicator = this.getWidth() * (0.9f - 0.6f) * ((ennemy.getMaxLife() - ennemy.getLife()) / (float) ennemy.getMaxLife());
+        float ennemyManaMultiplicator = this.getWidth() * (0.9f - 0.6f) * ((ennemy.getMaxMana() - ennemy.getMana()) / (float) ennemy.getMaxMana());
+        float ennemyPhysicalShieldMultiplicator = this.getWidth() * (0.9f - 0.6f) * ((ennemy.getMaxPhysicalShield() - ennemy.getPhysicalShield()) / (float) ennemy.getMaxPhysicalShield());
+        float ennemyMagicalShieldMultiplicator = this.getWidth() * (0.9f - 0.6f) * ((ennemy.getMaxMagicalShield() - ennemy.getMagicalShield()) / (float) ennemy.getMaxMagicalShield());
+
+        // Cadre vie
         paint.reset();
         paint.setColor(Color.WHITE);
         paint.setStrokeWidth(5);
         paint.setStyle(Paint.Style.STROKE);
-        if (player)
-            canvas.drawRect(this.getWidth() * 0.6f, this.getHeight() * 0.84f, this.getWidth() * 0.9f, this.getHeight() * 0.86f, paint);
-        else
-            canvas.drawRect(this.getWidth() * 0.1f, this.getHeight() * 0.14f, this.getWidth() * 0.4f, this.getHeight() * 0.16f, paint);
+        canvas.drawRect(this.getWidth() * 0.6f, this.getHeight() * 0.84f, this.getWidth() * 0.9f, this.getHeight() * 0.86f, paint); // Joueur
+        canvas.drawRect(this.getWidth() * 0.1f, this.getHeight() * 0.14f, this.getWidth() * 0.4f, this.getHeight() * 0.16f, paint); // Ennemie
+        // Cadre mana
+        canvas.drawRect(this.getWidth() * 0.6f, this.getHeight() * 0.87f, this.getWidth() * 0.9f, this.getHeight() * 0.89f, paint); // Joueur
+        canvas.drawRect(this.getWidth() * 0.1f, this.getHeight() * 0.17f, this.getWidth() * 0.4f, this.getHeight() * 0.19f, paint); // Ennemie
+
         // vie
         paint.reset();
         paint.setColor(Color.RED);
-        paint.setStyle(Paint.Style.FILL);
-        if (player)
-            canvas.drawRect(this.getWidth() * 0.6f, this.getHeight() * 0.84f, this.getWidth() * 0.9f - characterLifeMultiplicator, this.getHeight() * 0.86f, paint);
-        else
-            canvas.drawRect(this.getWidth() * 0.1f, this.getHeight() * 0.14f, this.getWidth() * 0.4f - characterLifeMultiplicator, this.getHeight() * 0.16f, paint);
-        // mana
+        canvas.drawRect(this.getWidth() * 0.6f, this.getHeight() * 0.84f, this.getWidth() * 0.9f - playerLifeMultiplicator, this.getHeight() * 0.86f, paint); // Joueur
+        canvas.drawRect(this.getWidth() * 0.1f, this.getHeight() * 0.14f, this.getWidth() * 0.4f - ennemyLifeMultiplicator, this.getHeight() * 0.16f, paint);// Ennemie
 
-        // bouclier Magique
+        // mana
+        paint.setColor(Color.BLUE);
+        canvas.drawRect(this.getWidth() * 0.6f, this.getHeight() * 0.87f, this.getWidth() * 0.9f - playerManaMultiplicator, this.getHeight() * 0.89f, paint); // Joueur
+        canvas.drawRect(this.getWidth() * 0.1f, this.getHeight() * 0.17f, this.getWidth() * 0.4f - ennemyManaMultiplicator, this.getHeight() * 0.19f, paint);// Ennemie
 
         // bouclier physique
+        paint.setColor(Color.GRAY);
+        canvas.drawRect(this.getWidth() * 0.6f, this.getHeight() * 0.84f, this.getWidth() * 0.9f - playerPhysicalShieldMultiplicator, this.getHeight() * 0.85f, paint); // Joueur
+        canvas.drawRect(this.getWidth() * 0.1f, this.getHeight() * 0.14f, this.getWidth() * 0.4f - ennemyPhysicalShieldMultiplicator, this.getHeight() * 0.15f, paint);// Ennemie
+
+        // bouclier magique
+        paint.setColor(Color.CYAN);
+        canvas.drawRect(this.getWidth() * 0.6f, this.getHeight() * 0.84f, this.getWidth() * 0.9f - playerMagicalShieldMultiplicator, this.getHeight() * 0.85f, paint); // Joueur
+        canvas.drawRect(this.getWidth() * 0.1f, this.getHeight() * 0.14f, this.getWidth() * 0.4f - ennemyMagicalShieldMultiplicator, this.getHeight() * 0.15f, paint);// Ennemie
     }
 
     /**
@@ -110,7 +128,7 @@ public class GameView extends View {
      * @return La bitmap redimensionne
      */
     private Bitmap reziseBitmap(Bitmap bitmap, int width, int height) {
-        return Bitmap.createScaledBitmap(bitmap, this.getWidth(), this.getHeight(), true);
+        return Bitmap.createScaledBitmap(bitmap, width, height, true);
     }
 
 }
