@@ -10,12 +10,12 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.amarena.rss.amarena_brawl.R;
-import com.amarena.rss.amarena_brawl.controlers.GameControler;
+import com.amarena.rss.amarena_brawl.controllers.GameController;
 import com.amarena.rss.amarena_brawl.models.Character;
 
 public class GameView extends View {
 
-    private GameControler gameControler = GameControler.getInstance();
+    private GameController gameController = GameController.getInstance();
     private Paint paint;
 
     /**
@@ -54,8 +54,8 @@ public class GameView extends View {
     @Override
     public void onDraw(Canvas canvas) {
         drawBackground(canvas);
-        drawBars(canvas, gameControler.getPlayer(), true);
-        drawBars(canvas, gameControler.getEnnemy(), false);
+        drawBars(canvas, gameController.getPlayer(), true);
+        drawBars(canvas, gameController.getEnnemy(), false);
     }
 
     /**

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.amarena.rss.amarena_brawl.R;
-import com.amarena.rss.amarena_brawl.controlers.GameControler;
+import com.amarena.rss.amarena_brawl.controllers.GameController;
 import com.amarena.rss.amarena_brawl.views.GameView;
 
 public class GameActivity extends AppCompatActivity {
@@ -24,6 +24,6 @@ public class GameActivity extends AppCompatActivity {
         fragmentTransaction.commit();
 
         //On initialise le gameControler
-        GameControler.getInstance().initGameControler(gameView);
+        GameController.getInstance().initGameControler(gameView);
     }
 }
