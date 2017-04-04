@@ -16,8 +16,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <RelativeLayout
-            android:id="@+id/fragmentAttacks"
+        <FrameLayout
+            android:id="@+id/fragmentAction"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="9" />

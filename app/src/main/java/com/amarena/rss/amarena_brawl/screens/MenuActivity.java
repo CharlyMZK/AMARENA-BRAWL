@@ -1,5 +1,6 @@
 package com.amarena.rss.amarena_brawl.screens;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
@@ -15,12 +16,13 @@ import android.widget.ListView;
 
 import com.amarena.rss.amarena_brawl.R;
 import com.amarena.rss.amarena_brawl.controllers.DataBaseLoader;
+import com.amarena.rss.amarena_brawl.controllers.GameController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivity extends Activity {
 
     private static final String TAG = MenuActivity.class.getCanonicalName();
     private static final int REQUEST_ENABLE_BT = 1;
@@ -35,6 +37,12 @@ public class MenuActivity extends AppCompatActivity {
         DataBaseLoader.LoadDataBase(); // Mise en place de la base de données si elle n'existe pas
 
         initButton();
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        GameController.destroyInstance(); // Permet de détruire la partie quand on reviens sur le menu
     }
 
     /**

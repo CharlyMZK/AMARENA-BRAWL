@@ -8,10 +8,14 @@
     <string name="aMBtnSettings">Settings</string>
 
     -- Fragment Action --
-    <string name="fAIBtnAction1">Attack 1 failed to load</string>
-    <string name="fAIBtnAction2">Attack 2 failed to load</string>
-    <string name="fAIBtnAction3">Attack 3 failed to load</string>
-    <string name="fAIBtnAction4">Attack 4 failed to load</string>
-    <string name="fAIBtnAction5">Attack 5 failed to load</string>
+    <string name="fAIBtnAction1">Action 1 failed to load</string>
+    <string name="fAIBtnAction2">Action 2 failed to load</string>
+    <string name="fAIBtnAction3">Action 3 failed to load</string>
+    <string name="fAIBtnAction4">Action 4 failed to load</string>
+    <string name="fAIBtnAction5">Action 5 failed to load</string>
 
+
+    -- Custom GameView --
+    <string name ="cGWin">You win</string>
+    <string name ="cGLose">You lose</string>
 </resources>

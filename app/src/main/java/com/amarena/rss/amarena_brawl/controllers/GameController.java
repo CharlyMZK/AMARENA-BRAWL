@@ -11,14 +11,14 @@ public class GameController {
     private GameView gameView;
 
     private Character player;
-    private Character ennemy;
+    private Character enemy;
 
     /**
      * Constructeur privé
      */
     private GameController() {
         this.player = new Character(Profession.ARCHER);
-        this.ennemy = new Character(Profession.WARRIOR);
+        this.enemy = new Character(Profession.WARRIOR);
     }
 
     /**
@@ -36,8 +36,22 @@ public class GameController {
      * @param id id de l'action
      */
     public void doAction(int id) {
-        player.doAction(ennemy, new Action(id));
+        player.doAction(enemy, new Action(id));
+        checkGame();
         gameView.invalidate();
+    }
+
+    /**
+     * Regarde quand la partie se termine
+     */
+    public void checkGame(){
+        if(player.getLife() == 0){
+            gameView.setGameFinish(true);
+            gameView.setPlayerWon(false);
+        }else if(enemy.getLife() == 0){
+            gameView.setGameFinish(true);
+            gameView.setPlayerWon(true);
+        }
     }
 
     /**
@@ -52,11 +66,18 @@ public class GameController {
         return gameController;
     }
 
+    /**
+     * Permet de detruire l'instance du GameControlleur
+     */
+    public static void destroyInstance(){
+        gameController = null;
+    }
+
     public Character getPlayer() {
         return player;
     }
 
-    public Character getEnnemy() {
-        return ennemy;
+    public Character getEnemy() {
+        return enemy;
     }
 }

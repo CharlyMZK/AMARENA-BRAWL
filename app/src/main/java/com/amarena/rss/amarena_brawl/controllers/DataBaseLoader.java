@@ -47,8 +47,8 @@ public class DataBaseLoader {
         Action shot1 = new Action(Profession.ARCHER, 1, ActionType.PHYSICALDAMAGE, "shot", 15, 15, 15, 5, 1, 0, 0, 0); // Enum pour les types
         Action shot2 = new Action(Profession.ARCHER, 2, ActionType.PHYSICALDAMAGE, "shot1", 15, 15, 15, 5, 1, 0, 0, 0);
         Action shot3 = new Action(Profession.ARCHER, 3, ActionType.PHYSICALDAMAGE, "shot2", 15, 15, 15, 5, 1, 0, 0, 0);
-        Action shot4 = new Action(Profession.ARCHER, 4, ActionType.PHYSICALDAMAGE, "shot3", 15, 15, 15, 5, 1, 0, 0, 0);
-        Action shot5 = new Action(Profession.ARCHER, 5, ActionType.PHYSICALDAMAGE, "shot4", 15, 15, 15, 5, 1, 0, 0, 0);
+        Action shot4 = new Action(Profession.ARCHER, 4, ActionType.MAGICALDAMAGE, "shot3", 30, 15, 15, 5, 1, 0, 0, 0);
+        Action shot5 = new Action(Profession.ARCHER, 5, ActionType.MAGICALDAMAGE, "shot4", 300, 15, 15, 5, 1, 0, 0, 0);
 
         SugarRecord.save(shot1);
         SugarRecord.save(shot2);
