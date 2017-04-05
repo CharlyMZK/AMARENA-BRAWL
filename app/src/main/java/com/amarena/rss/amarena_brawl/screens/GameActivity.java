@@ -3,8 +3,6 @@ package com.amarena.rss.amarena_brawl.screens;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
 import com.amarena.rss.amarena_brawl.R;
 import com.amarena.rss.amarena_brawl.controllers.GameController;
@@ -20,7 +18,7 @@ public class GameActivity extends Activity {
         setContentView(R.layout.activity_game);
 
         // Récupération du mode de jeu
-        GameMode gameMode = (GameMode)getIntent().getSerializableExtra("gameMode");
+        GameMode gameMode = (GameMode) getIntent().getSerializableExtra("gameMode");
 
         //On initialise le GameMode du GameControler
         GameController.getInstance().initGameMode(gameMode);

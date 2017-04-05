@@ -71,6 +71,8 @@ public class Character {
     public void doAction(Character character, Action action) {
         int number = action.generateAttack();
 
+        this.loseMana(action.getManaCost());
+
         switch (action.getActionType()) {
             case PHYSICALDAMAGE:
                 if (character.getPhysicalShield() - number >= 0) // On retire du bouclier
@@ -112,7 +114,7 @@ public class Character {
     }
 
     /**
-     * Permet d'enlever le nombre de point de vie à un personnage
+     * Permet d'enlever des points de vie à un personnage
      *
      * @param character Le personnage qui perds de la vie
      * @param number    le nombre de point de vie à retirer
@@ -122,6 +124,18 @@ public class Character {
             character.setLife(character.getLife() - number);
         else
             character.setLife(0);
+    }
+
+    /**
+     * Permet d'enlever des points de mana à un personnage
+     *
+     * @param number le nombre de point de mana à retirer
+     */
+    private void loseMana(int number) {
+        if (this.getMana() - number > 0)
+            this.setMana(this.getMana() - number);
+        else
+            this.setMana(0);
     }
 
     /**

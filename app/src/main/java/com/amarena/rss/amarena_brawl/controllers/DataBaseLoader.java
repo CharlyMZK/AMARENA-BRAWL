@@ -44,51 +44,51 @@ public class DataBaseLoader {
      * Crée les classes dans la base de données
      */
     private static void initArchersAttacks() {
-        Action shot1 = new Action(Profession.ARCHER, 1, ActionType.PHYSICALDAMAGE, "shot", 15, 15, 15, 5, 1, 0, 0, 0); // Enum pour les types
-        Action shot2 = new Action(Profession.ARCHER, 2, ActionType.PHYSICALDAMAGE, "shot1", 15, 15, 15, 5, 1, 0, 0, 0);
-        Action shot3 = new Action(Profession.ARCHER, 3, ActionType.PHYSICALDAMAGE, "shot2", 15, 15, 15, 5, 1, 0, 0, 0);
-        Action shot4 = new Action(Profession.ARCHER, 4, ActionType.MAGICALDAMAGE, "shot3", 30, 15, 15, 5, 1, 0, 0, 0);
-        Action shot5 = new Action(Profession.ARCHER, 5, ActionType.MAGICALDAMAGE, "shot4", 300, 15, 15, 5, 1, 0, 0, 0);
+        Action rapidShot = new Action(Profession.WARRIOR, 1, ActionType.PHYSICALDAMAGE, "Rapid shot", 20, 25, 50, 10, 1, 0, 0, 0);
+        Action fireShot = new Action(Profession.WARRIOR, 2, ActionType.MAGICALDAMAGE, "Fire shot", 25, 15, 100, 5, 1, 0, 0, 0);
+        Action glacialShot = new Action(Profession.WARRIOR, 3, ActionType.MAGICALDAMAGE, "Glacial shot", 40, 5, 150, 25, 2, 0, 0, 0);
+        Action punitiveShot = new Action(Profession.WARRIOR, 4, ActionType.PHYSICALDAMAGE, "Punitive shot", 50, 10, 175, 40, 2, 0, 0, 0);
+        Action recover = new Action(Profession.WARRIOR, 5, ActionType.HEAL, "Recover", 30, 5, 50, 5, 3, 0, 0, 0);
 
-        SugarRecord.save(shot1);
-        SugarRecord.save(shot2);
-        SugarRecord.save(shot3);
-        SugarRecord.save(shot4);
-        SugarRecord.save(shot5);
+        SugarRecord.save(rapidShot);
+        SugarRecord.save(fireShot);
+        SugarRecord.save(glacialShot);
+        SugarRecord.save(punitiveShot);
+        SugarRecord.save(recover);
     }
 
     /**
      * Crée les classes dans la base de données
      */
     private static void initWarriorsAttacks() {
-        Action shot1 = new Action(Profession.WARRIOR, 1, ActionType.PHYSICALDAMAGE, "shot5", 15, 15, 15, 5, 1, 0, 0, 0);
-        Action shot2 = new Action(Profession.WARRIOR, 2, ActionType.PHYSICALDAMAGE, "shot6", 15, 15, 15, 5, 1, 0, 0, 0);
-        Action shot3 = new Action(Profession.WARRIOR, 3, ActionType.PHYSICALDAMAGE, "shot7", 15, 15, 15, 5, 1, 0, 0, 0);
-        Action shot4 = new Action(Profession.WARRIOR, 4, ActionType.PHYSICALDAMAGE, "shot8", 15, 15, 15, 5, 1, 0, 0, 0);
-        Action shot5 = new Action(Profession.WARRIOR, 5, ActionType.PHYSICALDAMAGE, "shot9", 15, 15, 15, 5, 1, 0, 0, 0);
+        Action slash = new Action(Profession.WARRIOR, 1, ActionType.PHYSICALDAMAGE, "Slash", 25, 10, 50, 5, 1, 0, 0, 0);
+        Action charge = new Action(Profession.WARRIOR, 2, ActionType.PHYSICALDAMAGE, "Charge", 15, 50, 100, 10, 1, 0, 0, 0);
+        Action giantStrike = new Action(Profession.WARRIOR, 3, ActionType.PHYSICALDAMAGE, "Giant strike", 70, 10, 50, 50, 3, 0, 0, 0);
+        Action raiseShield = new Action(Profession.WARRIOR, 4, ActionType.PHYSICALSHIELD, "Raise shield", 10, 0, 0, 0, 2, 0, 0, 0);
+        Action bandage = new Action(Profession.WARRIOR, 5, ActionType.HEAL, "Bandage", 35, 5, 50, 5, 3, 0, 0, 0);
 
-        SugarRecord.save(shot1);
-        SugarRecord.save(shot2);
-        SugarRecord.save(shot3);
-        SugarRecord.save(shot4);
-        SugarRecord.save(shot5);
+        SugarRecord.save(slash);
+        SugarRecord.save(charge);
+        SugarRecord.save(giantStrike);
+        SugarRecord.save(raiseShield);
+        SugarRecord.save(bandage);
     }
 
     /**
      * Crée les classes dans la base de données
      */
     private static void initWizardsAttacks() {
-        Action shot1 = new Action(Profession.WIZARD, 1, ActionType.PHYSICALDAMAGE, "shot10", 15, 15, 15, 5, 1, 0, 0, 0);
-        Action shot2 = new Action(Profession.WIZARD, 2, ActionType.PHYSICALDAMAGE, "shot11", 15, 15, 15, 5, 1, 0, 0, 0);
-        Action shot3 = new Action(Profession.WIZARD, 3, ActionType.PHYSICALDAMAGE, "shot12", 15, 15, 15, 5, 1, 0, 0, 0);
-        Action shot4 = new Action(Profession.WIZARD, 4, ActionType.PHYSICALDAMAGE, "shot13", 15, 15, 15, 5, 1, 0, 0, 0);
-        Action shot5 = new Action(Profession.WIZARD, 5, ActionType.PHYSICALDAMAGE, "shot14", 15, 15, 15, 5, 1, 0, 0, 0);
+        Action fireOrb = new Action(Profession.WIZARD, 1, ActionType.MAGICALDAMAGE, "Fire orb", 30, 0, 0, 10, 1, 0, 0, 0);
+        Action GlacialShard = new Action(Profession.WIZARD, 2, ActionType.MAGICALDAMAGE, "Glacial Shard", 20, 20, 50, 5, 1, 0, 0, 0);
+        Action lightningStrike = new Action(Profession.WIZARD, 3, ActionType.MAGICALDAMAGE, "Lightning strike", 25, 10, 125, 5, 1, 0, 0, 0);
+        Action magicalShield = new Action(Profession.WIZARD, 4, ActionType.MAGICALSHIELD, "Magical shield", 15, 0, 0, 10, 2, 0, 0, 0);
+        Action rain = new Action(Profession.WIZARD, 5, ActionType.HEAL, "Rain", 30, 5, 50, 5, 3, 0, 0, 0);
 
-        SugarRecord.save(shot1);
-        SugarRecord.save(shot2);
-        SugarRecord.save(shot3);
-        SugarRecord.save(shot4);
-        SugarRecord.save(shot5);
+        SugarRecord.save(fireOrb);
+        SugarRecord.save(GlacialShard);
+        SugarRecord.save(lightningStrike);
+        SugarRecord.save(magicalShield);
+        SugarRecord.save(rain);
     }
 }
 
