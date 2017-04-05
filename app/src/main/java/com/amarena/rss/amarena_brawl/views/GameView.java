@@ -2,20 +2,17 @@ package com.amarena.rss.amarena_brawl.views;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 
 import com.amarena.rss.amarena_brawl.R;
 import com.amarena.rss.amarena_brawl.controllers.GameController;
 import com.amarena.rss.amarena_brawl.models.Character;
-import com.amarena.rss.amarena_brawl.screens.MenuActivity;
 
 public class GameView extends View {
 
@@ -162,18 +159,6 @@ public class GameView extends View {
         paint.setTextSize(200f);
         paint.setTextAlign(Paint.Align.CENTER);
         canvas.drawText(getResources().getText(R.string.cGLose).toString(), this.getWidth() / 2, this.getHeight() / 2, paint);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        Activity gameActivity;
-        Intent intent;
-        if (gameFinish) {
-            gameActivity = (Activity) getContext();
-            intent = new Intent(gameActivity, MenuActivity.class);
-            gameActivity.startActivity(intent);
-        }
-        return true;
     }
 
     /**
