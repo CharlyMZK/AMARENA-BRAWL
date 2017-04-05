@@ -124,6 +124,15 @@ public class Character {
             character.setLife(0);
     }
 
+    /**
+     * Permet d'avoir la liste de tous les personnages
+     *
+     * @retrun la liste de tous les personnages en base
+     */
+    public static List<Character> getAllCharacters() {
+        return SugarRecord.listAll(Character.class);
+    }
+
     public Long getId() {
         return id;
     }

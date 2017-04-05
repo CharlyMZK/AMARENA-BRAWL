@@ -7,7 +7,7 @@ public enum ActionType {
     MAGICALDAMAGE("magical damage"),
     HEAL("heal"),
     PHYSICALSHIELD("physical shield"),
-    MAGICALSHIELD("magicalShield");
+    MAGICALSHIELD("magical Shield");
 
     private String name;
 

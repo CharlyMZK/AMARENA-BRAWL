@@ -6,7 +6,6 @@ import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,8 +14,10 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.amarena.rss.amarena_brawl.R;
+import com.amarena.rss.amarena_brawl.controllers.BotController;
 import com.amarena.rss.amarena_brawl.controllers.DataBaseLoader;
 import com.amarena.rss.amarena_brawl.controllers.GameController;
+import com.amarena.rss.amarena_brawl.enums.GameMode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,6 +44,7 @@ public class MenuActivity extends Activity {
     protected void onPostResume() {
         super.onPostResume();
         GameController.destroyInstance(); // Permet de détruire la partie quand on reviens sur le menu
+        BotController.destroyInstance();
     }
 
     /**
@@ -94,6 +96,7 @@ public class MenuActivity extends Activity {
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
         } else {
             Intent intent = new Intent(this, GameActivity.class);
+            intent.putExtra("gameMode", GameMode.PVP);
             showBluetoothDialog();
             //startActivity(intent);
         }
@@ -105,6 +108,7 @@ public class MenuActivity extends Activity {
      */
     private void onClickBtnMenuPvb() {
         Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra("gameMode", GameMode.PVB);
         startActivity(intent);
     }
 

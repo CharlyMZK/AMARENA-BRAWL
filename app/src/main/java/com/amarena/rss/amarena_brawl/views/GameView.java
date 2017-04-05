@@ -14,8 +14,6 @@ import com.amarena.rss.amarena_brawl.R;
 import com.amarena.rss.amarena_brawl.controllers.GameController;
 import com.amarena.rss.amarena_brawl.models.Character;
 
-import java.util.zip.Inflater;
-
 public class GameView extends View {
 
     private GameController gameController = GameController.getInstance();
@@ -63,7 +61,7 @@ public class GameView extends View {
             drawBackground(canvas);
             drawBars(canvas);
         } else { // Quand la partie est finie
-            ((Activity)getContext()).findViewById(R.id.fragmentAction).setVisibility(View.GONE);
+            ((Activity) getContext()).findViewById(R.id.fragmentAction).setVisibility(View.GONE);
             if (playerWon)
                 drawWin(canvas);
             else

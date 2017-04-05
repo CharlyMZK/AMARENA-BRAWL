@@ -5,6 +5,7 @@ import com.amarena.rss.amarena_brawl.enums.Profession;
 import com.orm.SugarRecord;
 import com.orm.dsl.Table;
 
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Table
@@ -79,6 +80,15 @@ public class Action {
             number = 0;
 
         return number;
+    }
+
+    /**
+     * Permet d'avoir la liste de toutes les actions d'un m�tier
+     *
+     * @retrun la liste de toutes les actions en base
+     */
+    public static List<Action> getAllActions() {
+        return SugarRecord.listAll(Action.class);
     }
 
     public Long getId() {
