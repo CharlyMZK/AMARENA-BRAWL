@@ -43,7 +43,8 @@ public class BotController {
      * @param player le personnage du joueur
      */
     public void doAction(Character player) {
-        character.doAction(player, character.getActions().get(ThreadLocalRandom.current().nextInt(0, character.getActions().size())));
+        if (character.getUsableActions().size() > 0) // Seulement s'il a encore du mana
+            character.doAction(player, character.getUsableActions().get(ThreadLocalRandom.current().nextInt(0, character.getUsableActions().size())));
     }
 
     /**

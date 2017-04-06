@@ -21,7 +21,7 @@ public class GameController {
      * Constructeur privé
      */
     private GameController() {
-        this.player = new Character(Profession.ARCHER); // Mettre le metier du joueur
+        this.player = new Character(Profession.WIZARD); // Mettre le metier du joueur
     }
 
     /**
@@ -53,8 +53,20 @@ public class GameController {
         player.doAction(enemy, new Action(id));
         if (gameMode == GameMode.PVB) // TODO A ENLEVER ET REMPLACER PAR LE MECANISME DE TOUR
             botController.doAction(player);
+        //newTurn();
         checkGame();
         gameView.invalidate();
+    }
+
+    /**
+     * Fonction mettant à jour les infos pour le nouveau tour
+     */
+    private void newTurn() {
+        player.replenishMana();
+        player.refreshActionReloadTurn();
+
+        enemy.replenishMana();
+        enemy.refreshActionReloadTurn();
     }
 
     /**

@@ -8,11 +8,11 @@
     <string name="aMBtnSettings">Settings</string>
 
     -- Fragment Action --
-    <string name="fAIBtnAction1">Action 1 failed to load</string>
-    <string name="fAIBtnAction2">Action 2 failed to load</string>
-    <string name="fAIBtnAction3">Action 3 failed to load</string>
-    <string name="fAIBtnAction4">Action 4 failed to load</string>
-    <string name="fAIBtnAction5">Action 5 failed to load</string>
+    <string name="fABtnAction1">Action 1 failed to load</string>
+    <string name="fABtnAction2">Action 2 failed to load</string>
+    <string name="fABtnAction3">Action 3 failed to load</string>
+    <string name="fABtnAction4">Action 4 failed to load</string>
+    <string name="fABtnAction5">Action 5 failed to load</string>
 
 
     -- Custom GameView --

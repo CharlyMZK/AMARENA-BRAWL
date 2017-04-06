@@ -3,6 +3,7 @@ package com.amarena.rss.amarena_brawl.models;
 import com.amarena.rss.amarena_brawl.enums.ActionType;
 import com.amarena.rss.amarena_brawl.enums.Profession;
 import com.orm.SugarRecord;
+import com.orm.dsl.Ignore;
 import com.orm.dsl.Table;
 
 import java.util.List;
@@ -23,6 +24,9 @@ public class Action {
     private int manaCost;
     private int effectAttack; // Nombre d'attaques qui dure l'effet
     private int effectTurn; // Nombre de tours que dure l'effet
+    private int maxReloadTurn;
+
+    @Ignore
     private int reloadTurn; // Nombre de tour pour recharge l'attaque
 
     public Action() {
@@ -46,10 +50,11 @@ public class Action {
         this.manaCost = action.getManaCost();
         this.effectAttack = action.getEffectAttack();
         this.effectTurn = action.getEffectTurn();
-        this.reloadTurn = action.getReloadTurn();
+        this.maxReloadTurn = action.getMaxReloadTurn();
+        this.reloadTurn = 0;
     }
 
-    public Action(Profession profession, int chosenId, ActionType actionType, String name, int number, int criticalMultiplicator, int criticalChance, int failChance, int manaCost, int effectAttack, int effectTurn, int reloadTurn) {
+    public Action(Profession profession, int chosenId, ActionType actionType, String name, int number, int criticalMultiplicator, int criticalChance, int failChance, int manaCost, int effectAttack, int effectTurn, int maxReloadTurn) {
         this.profession = profession;
         this.chosenId = chosenId;
         this.actionType = actionType;
@@ -61,7 +66,7 @@ public class Action {
         this.manaCost = manaCost;
         this.effectAttack = effectAttack;
         this.effectTurn = effectTurn;
-        this.reloadTurn = reloadTurn;
+        this.maxReloadTurn = maxReloadTurn;
     }
 
     /**
@@ -80,6 +85,20 @@ public class Action {
             number = 0;
 
         return number;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        boolean equals = false;
+        Action action;
+
+        if (object instanceof Action) {
+            action = (Action) object;
+            if (name.equals(action.getName()))
+                equals = true;
+        }
+
+        return equals;
     }
 
     /**
@@ -193,5 +212,13 @@ public class Action {
 
     public void setReloadTurn(int reloadTurn) {
         this.reloadTurn = reloadTurn;
+    }
+
+    public int getMaxReloadTurn() {
+        return maxReloadTurn;
+    }
+
+    public void setMaxReloadTurn(int maxReloadTurn) {
+        this.maxReloadTurn = maxReloadTurn;
     }
 }

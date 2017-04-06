@@ -18,13 +18,13 @@
             android:layout_weight="1"
             android:padding="10dp">
 
-            <ImageButton
-                android:id="@+id/fAIBtnAction1"
+            <Button
+                android:id="@+id/fABtnAction1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:background="@drawable/fireball"
-                android:contentDescription="@string/fAIBtnAction1" />
+                android:contentDescription="@string/fABtnAction1" />
         </FrameLayout>
 
         <View
@@ -39,35 +39,13 @@
             android:layout_weight="1"
             android:padding="10dp">
 
-            <ImageButton
-                android:id="@+id/fAIBtnAction2"
+            <Button
+                android:id="@+id/fABtnAction2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:background="@drawable/fireball"
-                android:contentDescription="@string/fAIBtnAction2" />
-        </FrameLayout>
-
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#ffffff" />
-
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="10dp">
-
-            <ImageButton
-                android:id="@+id/fAIBtnAction3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="@drawable/fireball"
-                android:contentDescription="@string/fAIBtnAction3" />
+                android:background="@drawable/glacialshard"
+                android:contentDescription="@string/fABtnAction2" />
         </FrameLayout>
 
 
@@ -83,13 +61,35 @@
             android:layout_weight="1"
             android:padding="10dp">
 
-            <ImageButton
-                android:id="@+id/fAIBtnAction4"
+            <Button
+                android:id="@+id/fABtnAction3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:background="@drawable/fireball"
-                android:contentDescription="@string/fAIBtnAction4" />
+                android:background="@drawable/lightning"
+                android:contentDescription="@string/fABtnAction3" />
+        </FrameLayout>
+
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#ffffff" />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/fABtnAction4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/magicalshield"
+                android:contentDescription="@string/fABtnAction4" />
         </FrameLayout>
 
         <View
@@ -103,13 +103,13 @@
             android:layout_weight="1"
             android:padding="10dp">
 
-            <ImageButton
-                android:id="@+id/fAIBtnAction5"
+            <Button
+                android:id="@+id/fABtnAction5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:background="@drawable/fireball"
-                android:contentDescription="@string/fAIBtnAction5" />
+                android:background="@drawable/heal"
+                android:contentDescription="@string/fABtnAction5" />
         </FrameLayout>
     </LinearLayout>
 </FrameLayout>

@@ -70,46 +70,49 @@ public class Character {
      */
     public void doAction(Character character, Action action) {
         int number = action.generateAttack();
+        if (getUsableActions().contains(action)) {
 
-        this.loseMana(action.getManaCost());
+            action.setReloadTurn(action.getMaxReloadTurn()); // Set le nombre de tour de chargement au max
+            this.loseMana(action.getManaCost());
 
-        switch (action.getActionType()) {
-            case PHYSICALDAMAGE:
-                if (character.getPhysicalShield() - number >= 0) // On retire du bouclier
-                    character.setPhysicalShield(character.getPhysicalShield() - number);
-                else {
-                    character.setPhysicalShield(0);
-                    number = number - character.getPhysicalShield();
-                    loseLife(character, number);
-                }
-                break;
-            case MAGICALDAMAGE:
-                if (character.getMagicalShield() - number >= 0) // On retire le bouclier
-                    character.setMagicalShield(character.getMagicalShield() - number);
-                else {
-                    character.setMagicalShield(0);
-                    number = number - character.getMagicalShield();
-                    loseLife(character, number);
-                }
-                break;
-            case HEAL:
-                if (this.life + number < this.maxLife)
-                    this.life += number;
-                else
-                    this.life = this.maxLife;
-                break;
-            case PHYSICALSHIELD:
-                if (this.physicalShield + number < this.maxPhysicalShield)
-                    this.physicalShield += number;
-                else
-                    this.physicalShield = this.maxPhysicalShield;
-                break;
-            case MAGICALSHIELD:
-                if (this.magicalShield + number < this.maxMagicalShield)
-                    this.magicalShield += number;
-                else
-                    this.magicalShield = this.maxMagicalShield;
-                break;
+            switch (action.getActionType()) {
+                case PHYSICALDAMAGE:
+                    if (character.getPhysicalShield() - number >= 0) // On retire du bouclier
+                        character.setPhysicalShield(character.getPhysicalShield() - number);
+                    else {
+                        character.setPhysicalShield(0);
+                        number = number - character.getPhysicalShield();
+                        loseLife(character, number);
+                    }
+                    break;
+                case MAGICALDAMAGE:
+                    if (character.getMagicalShield() - number >= 0) // On retire le bouclier
+                        character.setMagicalShield(character.getMagicalShield() - number);
+                    else {
+                        character.setMagicalShield(0);
+                        number = number - character.getMagicalShield();
+                        loseLife(character, number);
+                    }
+                    break;
+                case HEAL:
+                    if (this.life + number < this.maxLife)
+                        this.life += number;
+                    else
+                        this.life = this.maxLife;
+                    break;
+                case PHYSICALSHIELD:
+                    if (this.physicalShield + number < this.maxPhysicalShield)
+                        this.physicalShield += number;
+                    else
+                        this.physicalShield = this.maxPhysicalShield;
+                    break;
+                case MAGICALSHIELD:
+                    if (this.magicalShield + number < this.maxMagicalShield)
+                        this.magicalShield += number;
+                    else
+                        this.magicalShield = this.maxMagicalShield;
+                    break;
+            }
         }
     }
 
@@ -136,6 +139,38 @@ public class Character {
             this.setMana(this.getMana() - number);
         else
             this.setMana(0);
+    }
+
+    /**
+     * Permet de remplir la mana au max
+     */
+    public void replenishMana() {
+        mana = maxMana;
+    }
+
+
+    /**
+     * Permet de mettre à jour le nombre de tour de chargement sur sort
+     */
+    public void refreshActionReloadTurn() {
+        for (Action action : actions) {
+            if (action.getReloadTurn() != 0)
+                action.setReloadTurn(action.getReloadTurn() - 1);
+        }
+    }
+
+    /**
+     * Permet d'avoir la liste des actions utilisables (temps de recharge à 0 et cout en mana ok)
+     *
+     * @return La liste des actions utilisables
+     */
+    public List<Action> getUsableActions() {
+        List<Action> usableActions = new ArrayList<>();
+        for (Action action : actions) {
+            if (action.getManaCost() <= mana && action.getReloadTurn() == 0)
+                usableActions.add(action);
+        }
+        return usableActions;
     }
 
     /**

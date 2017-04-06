@@ -15,7 +15,7 @@ import android.widget.ListView;
 
 import com.amarena.rss.amarena_brawl.R;
 import com.amarena.rss.amarena_brawl.controllers.BotController;
-import com.amarena.rss.amarena_brawl.controllers.DataBaseLoader;
+import com.amarena.rss.amarena_brawl.controllers.DatabaseLoader;
 import com.amarena.rss.amarena_brawl.controllers.GameController;
 import com.amarena.rss.amarena_brawl.enums.GameMode;
 
@@ -35,7 +35,7 @@ public class MenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        DataBaseLoader.LoadDataBase(); // Mise en place de la base de données si elle n'existe pas
+        DatabaseLoader.LoadDataBase(); // Mise en place de la base de données si elle n'existe pas
 
         initButton();
     }
