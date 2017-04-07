@@ -1,11 +1,7 @@
 package com.amarena.rss.amarena_brawl.models;
 
-import com.orm.dsl.Table;
-
-@Table
 public class Result {
-
-    private Long id;
+//TODO A revoir pour savoir si on stock en base ou sharedpreferences
     private Player player;
     private Character character;
     private int victoriesPvp;
@@ -23,14 +19,6 @@ public class Result {
         this.victoriesPvc = victoriesPvc;
         this.defeatsPvp = defeatsPvp;
         this.defeatsPvc = defeatsPvc;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Player getPlayer() {

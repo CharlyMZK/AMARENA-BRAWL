@@ -1,4 +1,21 @@
 <resources>
-    <string name="app_name">AMARENA_BRAWL</string>
-    <string name="menu_pvp">Joueur vs Joueur</string>
+    <string name="appName">Amarena Brawl</string>
+
+    -- Activity Menu --
+    <string name="aMBtnPvp">Joueur vs Joueur</string>
+    <string name="aMBtnPvb">Joueur vs Bot</string>
+    <string name="aMBtnCustomisation">Personnalisation</string>
+    <string name="aMBtnSettings">Paramètres</string>
+
+    -- Fragment Action --
+    <string name="fAIBtnAction1">Action 1 non chargée</string>
+    <string name="fAIBtnAction2">Action 2 non chargée</string>
+    <string name="fAIBtnAction3">Action 3 non chargée</string>
+    <string name="fAIBtnAction4">Action 4 non chargée</string>
+    <string name="fAIBtnAction5">Action 5 non chargée</string>
+
+
+    -- Custom GameView --
+    <string name ="cGWin">Gagné</string>
+    <string name ="cGLose">Perdu</string>
 </resources>

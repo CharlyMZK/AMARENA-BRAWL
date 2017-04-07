@@ -1,32 +1,26 @@
 package com.amarena.rss.amarena_brawl.models;
 
-import com.orm.dsl.Table;
+import com.amarena.rss.amarena_brawl.enums.Profession;
 
-@Table
 public class Player {
 
-    private Long id;
     private String nickName;
     private String password;
     private int level;
-    private Character character;
+    private Profession profession;
 
     public Player() {
+        this.nickName = "Player";
+        this.password = "";
+        this.level = 0;
+        this.profession = Profession.WARRIOR;
     }
 
-    public Player(String nickName, String password, int level, Character character) {
+    public Player(String nickName, String password, int level, Profession profession) {
         this.nickName = nickName;
         this.password = password;
         this.level = level;
-        this.character = character;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.profession = profession;
     }
 
     public String getNickName() {
@@ -53,11 +47,11 @@ public class Player {
         this.level = level;
     }
 
-    public Character getCharacter() {
-        return character;
+    public Profession getProfession() {
+        return profession;
     }
 
-    public void setCharacter(Character character) {
-        this.character = character;
+    public void setProfession(Profession profession) {
+        this.profession = profession;
     }
 }

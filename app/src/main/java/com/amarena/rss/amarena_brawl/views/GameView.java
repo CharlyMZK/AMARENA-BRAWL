@@ -1,22 +1,29 @@
 package com.amarena.rss.amarena_brawl.views;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.amarena.rss.amarena_brawl.R;
-/*import com.amarena.rss.amarena_brawl.controlers.GameControler;*/
+import com.amarena.rss.amarena_brawl.controllers.GameController;
 import com.amarena.rss.amarena_brawl.models.Character;
+import com.amarena.rss.amarena_brawl.screens.MenuActivity;
 
 public class GameView extends View {
 
-   // private GameControler gameControler = GameControler.getInstance();
+    private GameController gameController = GameController.getInstance();
     private Paint paint;
+
+    private boolean gameFinish = false;
+    private boolean playerWon = false;
 
     /**
      * Constructeur
@@ -53,9 +60,16 @@ public class GameView extends View {
      */
     @Override
     public void onDraw(Canvas canvas) {
-        drawBackground(canvas);
-        //drawBars(canvas, gameControler.getPlayer(), true);
-        //drawBars(canvas, gameControler.getEnnemy(), false);
+        if (!gameFinish) { // Tant que la partie n'est pas fini
+            drawBackground(canvas);
+            drawBars(canvas);
+        } else { // Quand la partie est finie
+            ((Activity) getContext()).findViewById(R.id.fragmentAction).setVisibility(View.GONE);
+            if (playerWon)
+                drawWin(canvas);
+            else
+                drawLose(canvas);
+        }
     }
 
     /**
@@ -72,33 +86,94 @@ public class GameView extends View {
     /**
      * Permet de dessiner la vie d'une personnage, avec son bouclier et sa mana
      *
-     * @param canvas    Le canvas a utiliser
-     * @param character Le personnage a actualiser
-     * @param player    true si c'est le personnage du joueur
+     * @param canvas Le canvas a utiliser
      */
-    private void drawBars(Canvas canvas, Character character, boolean player) {
-        float characterLifeMultiplicator = (this.getWidth() * 0.9f - this.getWidth() * 0.6f) * (((float)character.getMaxLifePoints() - (float)character.getCurrentLifePoints()) / (float)character.getMaxLifePoints());
+    private void drawBars(Canvas canvas) {
+        float startWidthBarPlayer = 0.6f;
+        float endWidthBarPlayer = 0.9f;
+        float startHeightBarPlayerLife = 0.84f;
+        float endHeightBarPlayerLife = 0.86f;
+        float startHeightBarPlayerMana = 0.87f;
+        float endHeightBarPlayerMana = 0.89f;
+
+        float startWidthBarEnemy = 0.1f;
+        float endWidthBarEnemy = 0.4f;
+        float startHeightBarEnemyLife = 0.14f;
+        float endHeightBarEnemyLife = 0.16f;
+        float startHeightBarEnemyMana = 0.17f;
+        float endHeightBarEnemyMana = 0.19f;
+
+        Character player = gameController.getPlayer();
+        float playerLifeMultiplicator = this.getWidth() * (endWidthBarPlayer - startWidthBarPlayer) * ((player.getMaxLife() - player.getLife()) / (float) player.getMaxLife());
+        float playerManaMultiplicator = this.getWidth() * (endWidthBarPlayer - startWidthBarPlayer) * ((player.getMaxMana() - player.getMana()) / (float) player.getMaxMana());
+        float playerPhysicalShieldMultiplicator = this.getWidth() * (endWidthBarPlayer - startWidthBarPlayer) * ((player.getMaxPhysicalShield() - player.getPhysicalShield()) / (float) player.getMaxPhysicalShield());
+        float playerMagicalShieldMultiplicator = this.getWidth() * (endWidthBarPlayer - startWidthBarPlayer) * ((player.getMaxMagicalShield() - player.getMagicalShield()) / (float) player.getMaxMagicalShield());
+
+        Character enemy = gameController.getEnemy();
+        float enemyLifeMultiplicator = this.getWidth() * (endWidthBarPlayer - startWidthBarPlayer) * ((enemy.getMaxLife() - enemy.getLife()) / (float) enemy.getMaxLife());
+        float enemyManaMultiplicator = this.getWidth() * (endWidthBarPlayer - startWidthBarPlayer) * ((enemy.getMaxMana() - enemy.getMana()) / (float) enemy.getMaxMana());
+        float enemyPhysicalShieldMultiplicator = this.getWidth() * (endWidthBarPlayer - startWidthBarPlayer) * ((enemy.getMaxPhysicalShield() - enemy.getPhysicalShield()) / (float) enemy.getMaxPhysicalShield());
+        float enemyMagicalShieldMultiplicator = this.getWidth() * (endWidthBarPlayer - startWidthBarPlayer) * ((enemy.getMaxMagicalShield() - enemy.getMagicalShield()) / (float) enemy.getMaxMagicalShield());
+
+        // Cadre vie
         paint.reset();
         paint.setColor(Color.WHITE);
         paint.setStrokeWidth(5);
         paint.setStyle(Paint.Style.STROKE);
-        if (player)
-            canvas.drawRect(this.getWidth() * 0.6f, this.getHeight() * 0.84f, this.getWidth() * 0.9f, this.getHeight() * 0.86f, paint);
-        else
-            canvas.drawRect(this.getWidth() * 0.1f, this.getHeight() * 0.14f, this.getWidth() * 0.4f, this.getHeight() * 0.16f, paint);
+        canvas.drawRect(this.getWidth() * startWidthBarPlayer, this.getHeight() * startHeightBarPlayerLife, this.getWidth() * endWidthBarPlayer, this.getHeight() * endHeightBarPlayerLife, paint); // Joueur
+        canvas.drawRect(this.getWidth() * startWidthBarEnemy, this.getHeight() * startHeightBarEnemyLife, this.getWidth() * endWidthBarEnemy, this.getHeight() * endHeightBarEnemyLife, paint); // Ennemie
+        // Cadre mana
+        canvas.drawRect(this.getWidth() * startWidthBarPlayer, this.getHeight() * startHeightBarPlayerMana, this.getWidth() * endWidthBarPlayer, this.getHeight() * endHeightBarPlayerMana, paint); // Joueur
+        canvas.drawRect(this.getWidth() * startWidthBarEnemy, this.getHeight() * startHeightBarEnemyMana, this.getWidth() * endWidthBarEnemy, this.getHeight() * endHeightBarEnemyMana, paint); // Ennemie
+
         // vie
         paint.reset();
         paint.setColor(Color.RED);
-        paint.setStyle(Paint.Style.FILL);
-        if (player)
-            canvas.drawRect(this.getWidth() * 0.6f, this.getHeight() * 0.84f, this.getWidth() * 0.9f - characterLifeMultiplicator, this.getHeight() * 0.86f, paint);
-        else
-            canvas.drawRect(this.getWidth() * 0.1f, this.getHeight() * 0.14f, this.getWidth() * 0.4f - characterLifeMultiplicator, this.getHeight() * 0.16f, paint);
-        // mana
+        canvas.drawRect(this.getWidth() * startWidthBarPlayer, this.getHeight() * startHeightBarPlayerLife, this.getWidth() * endWidthBarPlayer - playerLifeMultiplicator, this.getHeight() * endHeightBarPlayerLife, paint); // Joueur
+        canvas.drawRect(this.getWidth() * startWidthBarEnemy, this.getHeight() * startHeightBarEnemyLife, this.getWidth() * endWidthBarEnemy - enemyLifeMultiplicator, this.getHeight() * endHeightBarEnemyLife, paint);// Ennemie
 
-        // bouclier Magique
+        // mana
+        paint.setColor(Color.BLUE);
+        canvas.drawRect(this.getWidth() * startWidthBarPlayer, this.getHeight() * startHeightBarPlayerMana, this.getWidth() * endWidthBarPlayer - playerManaMultiplicator, this.getHeight() * endHeightBarPlayerMana, paint); // Joueur
+        canvas.drawRect(this.getWidth() * startWidthBarEnemy, this.getHeight() * startHeightBarEnemyMana, this.getWidth() * endWidthBarEnemy - enemyManaMultiplicator, this.getHeight() * endHeightBarEnemyMana, paint);// Ennemie
 
         // bouclier physique
+        paint.setColor(Color.GRAY);
+        canvas.drawRect(this.getWidth() * startWidthBarPlayer, this.getHeight() * startHeightBarPlayerLife, this.getWidth() * endWidthBarPlayer - playerPhysicalShieldMultiplicator, this.getHeight() * 0.85f, paint); // Joueur
+        canvas.drawRect(this.getWidth() * startWidthBarEnemy, this.getHeight() * startHeightBarEnemyLife, this.getWidth() * endWidthBarEnemy - enemyPhysicalShieldMultiplicator, this.getHeight() * 0.15f, paint);// Ennemie
+
+        // bouclier magique
+        paint.setColor(Color.CYAN);
+        canvas.drawRect(this.getWidth() * startWidthBarPlayer, this.getHeight() * startHeightBarPlayerLife, this.getWidth() * endWidthBarPlayer - playerMagicalShieldMultiplicator, this.getHeight() * 0.85f, paint); // Joueur
+        canvas.drawRect(this.getWidth() * startWidthBarEnemy, this.getHeight() * startHeightBarEnemyLife, this.getWidth() * endWidthBarEnemy - enemyMagicalShieldMultiplicator, this.getHeight() * 0.15f, paint);// Ennemie
+    }
+
+    private void drawWin(Canvas canvas) {
+        paint.reset();
+        paint.setColor(Color.GREEN);
+        paint.setTextSize(200f);
+        paint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText(getResources().getText(R.string.cGWin).toString(), this.getWidth() / 2, this.getHeight() / 2, paint);
+    }
+
+    private void drawLose(Canvas canvas) {
+        paint.reset();
+        paint.setColor(Color.RED);
+        paint.setTextSize(200f);
+        paint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText(getResources().getText(R.string.cGLose).toString(), this.getWidth() / 2, this.getHeight() / 2, paint);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        Activity gameActivity;
+        Intent intent;
+        if (gameFinish) {
+            gameActivity = (Activity) getContext();
+            intent = new Intent(gameActivity, MenuActivity.class);
+            gameActivity.startActivity(intent);
+        }
+        return true;
     }
 
     /**
@@ -110,7 +185,22 @@ public class GameView extends View {
      * @return La bitmap redimensionne
      */
     private Bitmap reziseBitmap(Bitmap bitmap, int width, int height) {
-        return Bitmap.createScaledBitmap(bitmap, this.getWidth(), this.getHeight(), true);
+        return Bitmap.createScaledBitmap(bitmap, width, height, true);
     }
 
+    public boolean isGameFinish() {
+        return gameFinish;
+    }
+
+    public void setGameFinish(boolean gameFinish) {
+        this.gameFinish = gameFinish;
+    }
+
+    public boolean isPlayerWon() {
+        return playerWon;
+    }
+
+    public void setPlayerWon(boolean playerWon) {
+        this.playerWon = playerWon;
+    }
 }
