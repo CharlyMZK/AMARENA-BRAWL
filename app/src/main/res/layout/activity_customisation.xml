@@ -6,4 +6,108 @@
     android:layout_height="match_parent"
     tools:context="com.amarena.rss.amarena_brawl.screens.CustomisationActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TabHost
+            android:id="@+id/tabHost"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></TabWidget>
+
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/wizardLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#ffc916"
+                        android:orientation="vertical">
+
+                        <TableLayout
+                            android:id="@+id/wizardSpellGridView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:background="#ff0000"
+                            android:layout_margin="20dp"/>
+
+                        <FrameLayout
+                            android:id="@+id/fragmentWizardSpell"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="9" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/warriorLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#da8200"
+                        android:orientation="vertical">
+
+                        <TableLayout
+                            android:id="@+id/warriorSpellGridView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:background="#ff0000"
+                            android:layout_margin="20dp"/>
+
+                        <FrameLayout
+                            android:id="@+id/fragmentWarriorSpell"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="9" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/archerLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#5b89ff"
+                        android:orientation="vertical">
+
+                        <TableLayout
+                            android:id="@+id/archerSpellGridView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:background="#ff0000"
+                            android:layout_margin="20dp"/>
+
+                        <FrameLayout
+                            android:id="@+id/fragmentArcherSpell"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="9" />
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </TabHost>
+        <FrameLayout
+            android:id="@+id/fragmentAction"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9" />
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
