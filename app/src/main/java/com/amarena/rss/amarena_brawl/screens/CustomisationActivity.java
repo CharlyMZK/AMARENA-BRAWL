@@ -30,6 +30,9 @@ public class CustomisationActivity extends Activity {
     ImageView imag;
     boolean imageOn = false;
     TabHost tabHost;
+    static Action selectedSpell;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,15 +122,17 @@ public class CustomisationActivity extends Activity {
         // --
     }
 
-    public void addButtons(int numRows,int buttonsInRow,Action action,TableLayout table,LinearLayout[] tableRowLayout){
+    public void addButtons(int numRows,int buttonsInRow,final Action action,TableLayout table,LinearLayout[] tableRowLayout){
         int rowcount=0;
         int cpt = 0;
         ImageButton[] buttons = new ImageButton[numRows*buttonsInRow];
         final String s = "ATTAQUE :"+action.getProfession()+"-"+action.getName();
         buttons[cpt] = new ImageButton(table.getContext(), null, android.R.attr.buttonStyleSmall);
-        buttons[cpt].setImageDrawable(ContextCompat.getDrawable(this,R.drawable.icon));
+        String spellName = "icon";
+        int resID = getResources().getIdentifier(spellName , "drawable", getPackageName());
+        buttons[cpt].setImageDrawable(ContextCompat.getDrawable(this,resID));
         buttons[cpt].setId(cpt);
-        buttons[cpt].setVisibility(View.VISIBLE);
+        buttons[cpt].setVisibility(View.VISIBLE); 
         buttons[cpt].setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -135,7 +140,8 @@ public class CustomisationActivity extends Activity {
                 Context context = getApplicationContext();
                 CharSequence text = s;
                 int duration = Toast.LENGTH_SHORT;
-
+                selectedSpell = action;
+                System.out.println("Selected spell is : "+selectedSpell.getName());
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
 
@@ -226,6 +232,16 @@ public class CustomisationActivity extends Activity {
         //GridView wizardGridView = (GridView) findViewById(R.id.wizardSpellGridView);
         //wizardGridView.addView(spell);
     }
+
+    public static Action getSelectedSpell() {
+        return selectedSpell;
+    }
+
+    public static void setSelectedSpell(Action selectedSpell) {
+        selectedSpell = selectedSpell;
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

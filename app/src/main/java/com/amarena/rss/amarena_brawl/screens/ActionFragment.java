@@ -1,5 +1,6 @@
 package com.amarena.rss.amarena_brawl.screens;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,10 +9,12 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.amarena.rss.amarena_brawl.R;
+import com.amarena.rss.amarena_brawl.controllers.CustomisationController;
 import com.amarena.rss.amarena_brawl.controllers.GameController;
 
 public class ActionFragment extends Fragment {
     private GameController gameController = GameController.getInstance();
+    private CustomisationController customisationController = CustomisationController.getInstance();
 
     public ActionFragment() {
     }
@@ -24,6 +27,7 @@ public class ActionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_action, container, false);
 
         ImageButton fAIBtnAction1 = (ImageButton) view.findViewById(R.id.fAIBtnAction1);
@@ -31,41 +35,96 @@ public class ActionFragment extends Fragment {
         ImageButton fAIBtnAction3 = (ImageButton) view.findViewById(R.id.fAIBtnAction3);
         ImageButton fAIBtnAction4 = (ImageButton) view.findViewById(R.id.fAIBtnAction4);
         ImageButton fAIBtnAction5 = (ImageButton) view.findViewById(R.id.fAIBtnAction5);
+        if (((Activity) container.getContext()).getClass() == GameActivity.class) {
 
-        fAIBtnAction1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickAction1();
-            }
-        });
-        fAIBtnAction2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickAction2();
-            }
-        });
-        fAIBtnAction3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickAction3();
-            }
-        });
-        fAIBtnAction4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickAction4();
-            }
-        });
-        fAIBtnAction5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickAction5();
-            }
-        });
+
+            fAIBtnAction1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickAction1();
+                }
+            });
+            fAIBtnAction2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickAction2();
+                }
+            });
+            fAIBtnAction3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickAction3();
+                }
+            });
+            fAIBtnAction4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickAction4();
+                }
+            });
+            fAIBtnAction5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickAction5();
+                }
+            });
+        }else if (((Activity) container.getContext()).getClass() == CustomisationActivity.class) {
+            fAIBtnAction1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickChangeGameActivity(1);
+                }
+            });
+            fAIBtnAction2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickChangeGameActivity(2);
+                }
+            });
+            fAIBtnAction3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickChangeGameActivity(3);
+                }
+            });
+            fAIBtnAction4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickChangeGameActivity(4);
+                }
+            });
+            fAIBtnAction5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickChangeGameActivity(5);
+                }
+            });
+        }
+
 
         return view;
     }
 
+    private void onClickChangeGameActivity(int number) {
+        switch (number) {
+            case 1:
+                customisationController.changeAction(1);
+                break;
+            case 2:
+                customisationController.changeAction(2);
+                break;
+            case 3:
+                customisationController.changeAction(3);
+                break;
+            case 4:
+                customisationController.changeAction(4);
+                break;
+            case 5:
+                customisationController.changeAction(5);
+                break;
+        }
+        //refreshButtonsGameActivity(); // Met a jour les bouttons
+    }
 
     private void onClickAction1() {
         gameController.doAction(1);

@@ -4,6 +4,7 @@ import com.amarena.rss.amarena_brawl.enums.GameMode;
 import com.amarena.rss.amarena_brawl.enums.Profession;
 import com.amarena.rss.amarena_brawl.models.Action;
 import com.amarena.rss.amarena_brawl.models.Character;
+import com.amarena.rss.amarena_brawl.screens.CustomisationActivity;
 import com.amarena.rss.amarena_brawl.views.GameView;
 
 public class GameController {
@@ -56,6 +57,7 @@ public class GameController {
         checkGame();
         gameView.invalidate();
     }
+
 
     /**
      * Regarde quand la partie se termine

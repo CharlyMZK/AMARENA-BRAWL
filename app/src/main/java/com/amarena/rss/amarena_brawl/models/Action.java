@@ -91,6 +91,11 @@ public class Action {
         return SugarRecord.listAll(Action.class);
     }
 
+    public static Action getActionFromChosenId(int id){
+        Action action = SugarRecord.find(Action.class, "chosen_id = ?", Integer.toString(id)).get(0);
+        return action;
+    }
+
     public Long getId() {
         return id;
     }
